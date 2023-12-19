@@ -11,7 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>employee-one</artifactId>
     <version>1.0.0</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>SpringBoot2</name>
     <description>SpringBoot2</description>
     <properties>
