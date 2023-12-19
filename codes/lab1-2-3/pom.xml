@@ -9,8 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>SpringBoot3</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>employee-one</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
     <name>SpringBoot2</name>
     <description>SpringBoot2</description>
     <properties>
@@ -72,11 +73,49 @@
 
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+
+            </plugin>
+
+            <!-- Set a JDK compiler level -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Make this jar executable -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <!-- DO NOT include log4j.properties file in your Jar -->
+                    <excludes>
+                        <exclude>**/log4j.properties</exclude>
+                    </excludes>
+                    <archive>
+                        <manifest>
+                            <!-- Jar file entry point -->
+                            <mainClass>com.example.springboot3.SpringBoot3Application</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
